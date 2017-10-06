@@ -13,6 +13,7 @@ var connection = mysql.createConnection({
   database: "bamazon_db"
 });
 
+//displays a list of functions for manager, then goes to that depending on which one
 connection.connect(function(err) {
   if (err) throw err;
 inquirer.prompt([
@@ -39,6 +40,7 @@ inquirer.prompt([
 	});
 });
 
+//displays whole item
 function viewProducts(){
 	connection.query("SELECT * FROM catalog", function(err, res) {
     if (err) throw err;
@@ -47,6 +49,7 @@ function viewProducts(){
    }); 
 }
 
+//shows only thosese where stock quantity < 5
 function viewLowInventory(){
 	connection.query("SELECT * FROM catalog WHERE stock_quantity < 5", function(err, res) {
     if (err) throw err;
@@ -55,6 +58,7 @@ function viewLowInventory(){
    }); 
 }
 
+//lets manager add inventory by id 
 function addInventory(){
 	inquirer.prompt([
 	 {
@@ -95,6 +99,7 @@ function addInventory(){
 	});
 }
 
+//lets the manager add a product by going through an inquirer input
 function addProduct(){
 	inquirer.prompt([
 	 {
