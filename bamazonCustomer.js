@@ -48,7 +48,7 @@ function start(){
     	if (err) throw err;
     	console.log(res[0].stock_quantity);
     	console.log(response.units);
-    	var stockRemoval = res[0].stock_quantity - response.units;
+    	var stockRemoval = parseInt(res[0].stock_quantity) - parseInt(response.units);
 		var total = response.units*res[0].price;
     	console.log(stockRemoval);
     	if(res[0].stock_quantity >= response.units){  
